@@ -1,0 +1,23 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.Grid.cpp.obj": [
+			"GHCharacter.cpp.obj",
+			"GHGameModeBase.cpp.obj",
+			"GHHexActor.cpp.obj",
+			"GHMoveComponent.cpp.obj",
+			"GHPlayerController.cpp.obj",
+			"GHSpawnGrid.cpp.obj",
+			"Grid.cpp.obj"
+		],
+		"Module.Grid.gen.cpp.obj": [
+			"GHCharacter.gen.cpp.obj",
+			"GHGameModeBase.gen.cpp.obj",
+			"GHHexActor.gen.cpp.obj",
+			"GHMoveComponent.gen.cpp.obj",
+			"GHPlayerController.gen.cpp.obj",
+			"GHSpawnGrid.gen.cpp.obj",
+			"Grid.init.gen.cpp.obj"
+		]
+	}
+}

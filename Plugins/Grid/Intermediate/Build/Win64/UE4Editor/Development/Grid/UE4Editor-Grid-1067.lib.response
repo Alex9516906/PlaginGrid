@@ -1,0 +1,13 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-Grid-1067.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\ue4\HomeWork\GloomHaven\Intermediate\Build\Win64\GloomHavenEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"C:\ue4\HomeWork\GloomHaven\Plugins\Grid\Intermediate\Build\Win64\UE4Editor\Development\Grid\Module.Grid.cpp.obj"
+"C:\ue4\HomeWork\GloomHaven\Plugins\Grid\Intermediate\Build\Win64\UE4Editor\Development\Grid\Module.Grid.gen.cpp.obj"
+"C:\ue4\HomeWork\GloomHaven\Plugins\Grid\Intermediate\Build\Win64\UE4Editor\Development\Grid\Default.rc2.res"
+/OUT:"C:\ue4\HomeWork\GloomHaven\Plugins\Grid\Intermediate\Build\Win64\UE4Editor\Development\Grid\UE4Editor-Grid-1067.lib"
