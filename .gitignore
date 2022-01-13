@@ -1,7 +1,7 @@
 ﻿/Intermediate/
-/.idea/
-/.vs/
-/Binaries/
-/DerivedDataCache/
-/Saved/
-/Script/
+/.idea
+/.vs
+/Binaries
+/DerivedDataCache
+/Saved
+/Script

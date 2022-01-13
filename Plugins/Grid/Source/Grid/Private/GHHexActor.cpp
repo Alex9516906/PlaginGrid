@@ -28,18 +28,16 @@ void AGHHexActor::BeginPlay()
 	
 }
 
-void AGHHexActor::FindFriends()
+void AGHHexActor::FindFriends(const TArray<AGHHexActor*>& Array)
 {
-	TArray<AActor*> array;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), this->GetClass(),array);
-	for(auto elementArrActor:array)
+	
+	for(auto elementArrActor:Array)
 	{
-		auto elementArrHex = Cast<AGHHexActor>(elementArrActor);
 		for(auto b:CoordY%2 == 0 ? CoordsEven:CoordsOdd)
 		{
-			if(b.X+CoordY == elementArrHex->CoordY && b.Y+CoordX == elementArrHex->CoordX)
+			if(b.X+CoordY == elementArrActor->CoordY && b.Y+CoordX == elementArrActor->CoordX)
 			{
-				FriendsHexArr.Add(elementArrHex);
+				FriendsHexArr.Add(elementArrActor);
 			}
 		}
 	}
@@ -137,7 +135,7 @@ void AGHHexActor::CharacterExitHex()
 	MeshGrid->SetMaterial(0, mat);
 }
 
-void AGHHexActor::Init()
+void AGHHexActor::CheckFloor()
 {
 	FHitResult HitResult;
 	FVector StartVector = GetActorLocation();

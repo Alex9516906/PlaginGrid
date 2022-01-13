@@ -4,11 +4,11 @@
 		"Module.Grid.cpp.obj": [
 			"GHCharacter.cpp.obj",
 			"GHGameModeBase.cpp.obj",
+			"GHPlayerController.cpp.obj",
+			"Grid.cpp.obj",
 			"GHHexActor.cpp.obj",
 			"GHMoveComponent.cpp.obj",
-			"GHPlayerController.cpp.obj",
-			"GHSpawnGrid.cpp.obj",
-			"Grid.cpp.obj"
+			"GHSpawnGrid.cpp.obj"
 		],
 		"Module.Grid.gen.cpp.obj": [
 			"GHCharacter.gen.cpp.obj",

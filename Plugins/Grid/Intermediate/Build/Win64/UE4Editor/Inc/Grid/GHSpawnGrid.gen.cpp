@@ -238,6 +238,11 @@ void EmptyLinkFunctionForGeneratedCodeGHSpawnGrid() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_StatickMesh_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FSoftObjectPropertyParams NewProp_StatickMesh;
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_HexArray_Inner;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_HexArray_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_HexArray;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SizeX_MetaData[];
 #endif
@@ -254,11 +259,6 @@ void EmptyLinkFunctionForGeneratedCodeGHSpawnGrid() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Hex_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Hex;
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_HexArray_Inner;
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_HexArray_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_HexArray;
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ArrayHexComponents_Inner;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ArrayHexComponents_MetaData[];
@@ -296,7 +296,7 @@ void EmptyLinkFunctionForGeneratedCodeGHSpawnGrid() {}
 		{ "ModuleRelativePath", "Public/GHSpawnGrid.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_SceneComponent = { "SceneComponent", nullptr, (EPropertyFlags)0x00200800000a0009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGHSpawnGrid, SceneComponent), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_SceneComponent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_SceneComponent_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_SceneComponent = { "SceneComponent", nullptr, (EPropertyFlags)0x00200800000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGHSpawnGrid, SceneComponent), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_SceneComponent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_SceneComponent_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_StatickMesh_MetaData[] = {
 		{ "Category", "MeshColor" },
@@ -304,6 +304,14 @@ void EmptyLinkFunctionForGeneratedCodeGHSpawnGrid() {}
 	};
 #endif
 	const UE4CodeGen_Private::FSoftObjectPropertyParams Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_StatickMesh = { "StatickMesh", nullptr, (EPropertyFlags)0x0024080000000001, UE4CodeGen_Private::EPropertyGenFlags::SoftObject, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGHSpawnGrid, StatickMesh), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_StatickMesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_StatickMesh_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray_Inner = { "HexArray", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_AGHHexActor_NoRegister, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray_MetaData[] = {
+		{ "Category", "GHSpawnGrid" },
+		{ "ModuleRelativePath", "Public/GHSpawnGrid.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray = { "HexArray", nullptr, (EPropertyFlags)0x0020080000000004, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGHSpawnGrid, HexArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_SizeX_MetaData[] = {
 		{ "Category", "SizeGrid" },
@@ -331,13 +339,6 @@ void EmptyLinkFunctionForGeneratedCodeGHSpawnGrid() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_Hex = { "Hex", nullptr, (EPropertyFlags)0x0040000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGHSpawnGrid, Hex), Z_Construct_UClass_AGHHexActor_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_Hex_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_Hex_MetaData)) };
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray_Inner = { "HexArray", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_AGHHexActor_NoRegister, METADATA_PARAMS(nullptr, 0) };
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray_MetaData[] = {
-		{ "ModuleRelativePath", "Public/GHSpawnGrid.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray = { "HexArray", nullptr, (EPropertyFlags)0x0040000000000000, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGHSpawnGrid, HexArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray_MetaData)) };
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_ArrayHexComponents_Inner = { "ArrayHexComponents", nullptr, (EPropertyFlags)0x00000000000a0008, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_UMeshComponent_NoRegister, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_ArrayHexComponents_MetaData[] = {
@@ -358,12 +359,12 @@ void EmptyLinkFunctionForGeneratedCodeGHSpawnGrid() {}
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AGHSpawnGrid_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_SceneComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_StatickMesh,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray_Inner,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_SizeX,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_SizeY,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexActorClass,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_Hex,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray_Inner,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexArray,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_ArrayHexComponents_Inner,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_ArrayHexComponents,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHSpawnGrid_Statics::NewProp_HexComponent,
@@ -395,7 +396,7 @@ void EmptyLinkFunctionForGeneratedCodeGHSpawnGrid() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AGHSpawnGrid, 1165668487);
+	IMPLEMENT_CLASS(AGHSpawnGrid, 4062257810);
 	template<> GRID_API UClass* StaticClass<AGHSpawnGrid>()
 	{
 		return AGHSpawnGrid::StaticClass();

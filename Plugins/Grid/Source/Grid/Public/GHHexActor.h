@@ -76,7 +76,7 @@ public:
 	UFUNCTION()
 	void OnClickMouse(UPrimitiveComponent* TouchedComponent,FKey ButtonPressed);
 	
-	virtual void FindFriends();
+	virtual void FindFriends(const TArray<AGHHexActor*>& Array);
 	
 	float WhatDistanceToHexEnd(AGHHexActor* EndHex);
 	
@@ -88,5 +88,5 @@ public:
 
 	void CharacterExitHex();
 
-	void Init();
+	void CheckFloor();
 };

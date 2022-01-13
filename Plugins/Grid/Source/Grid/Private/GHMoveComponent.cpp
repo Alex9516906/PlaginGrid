@@ -184,8 +184,11 @@ void UGHMoveComponent::FindPath(AGHHexActor* StartHex, AGHHexActor* HexEnd)
 			minDistanceHex = oneFriend;
 		}
 	}
-	HexWayArray.Add(minDistanceHex);
-	FindPath(minDistanceHex, HexEnd);
+	if(minDistanceHex)
+	{
+		HexWayArray.Add(minDistanceHex);
+		FindPath(minDistanceHex, HexEnd);
+	}
 }
 
 TArray<AGHHexActor*>& UGHMoveComponent::GetPath(AGHHexActor* StartHex, AGHHexActor* HexEnd)

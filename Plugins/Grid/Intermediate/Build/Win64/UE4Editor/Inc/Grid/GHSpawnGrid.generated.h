@@ -78,9 +78,9 @@ public: \
 #define GloomHaven_Plugins_Grid_Source_Grid_Public_GHSpawnGrid_h_13_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__SceneComponent() { return STRUCT_OFFSET(AGHSpawnGrid, SceneComponent); } \
 	FORCEINLINE static uint32 __PPO__StatickMesh() { return STRUCT_OFFSET(AGHSpawnGrid, StatickMesh); } \
+	FORCEINLINE static uint32 __PPO__HexArray() { return STRUCT_OFFSET(AGHSpawnGrid, HexArray); } \
 	FORCEINLINE static uint32 __PPO__HexActorClass() { return STRUCT_OFFSET(AGHSpawnGrid, HexActorClass); } \
 	FORCEINLINE static uint32 __PPO__Hex() { return STRUCT_OFFSET(AGHSpawnGrid, Hex); } \
-	FORCEINLINE static uint32 __PPO__HexArray() { return STRUCT_OFFSET(AGHSpawnGrid, HexArray); } \
 	FORCEINLINE static uint32 __PPO__ArrayHexComponents() { return STRUCT_OFFSET(AGHSpawnGrid, ArrayHexComponents); } \
 	FORCEINLINE static uint32 __PPO__HexComponent() { return STRUCT_OFFSET(AGHSpawnGrid, HexComponent); }
 

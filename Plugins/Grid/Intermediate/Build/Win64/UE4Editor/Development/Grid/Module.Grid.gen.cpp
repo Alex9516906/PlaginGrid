@@ -4,5 +4,3 @@
 #include "C:/ue4/HomeWork/GloomHaven/Plugins/Grid/Intermediate/Build/Win64/UE4Editor/Inc/Grid/GHHexActor.gen.cpp"
 #include "C:/ue4/HomeWork/GloomHaven/Plugins/Grid/Intermediate/Build/Win64/UE4Editor/Inc/Grid/GHMoveComponent.gen.cpp"
 #include "C:/ue4/HomeWork/GloomHaven/Plugins/Grid/Intermediate/Build/Win64/UE4Editor/Inc/Grid/GHPlayerController.gen.cpp"
-#include "C:/ue4/HomeWork/GloomHaven/Plugins/Grid/Intermediate/Build/Win64/UE4Editor/Inc/Grid/GHSpawnGrid.gen.cpp"
-#include "C:/ue4/HomeWork/GloomHaven/Plugins/Grid/Intermediate/Build/Win64/UE4Editor/Inc/Grid/Grid.init.gen.cpp"

@@ -35,5 +35,3 @@ C:/ue4/HomeWork/GloomHaven/Plugins/Grid/Intermediate/Build/Win64/UE4Editor/Inc/G
 C:/ue4/HomeWork/GloomHaven/Plugins/Grid/Intermediate/Build/Win64/UE4Editor/Inc/Grid/GHPlayerController.gen.cpp
 C:\ue4\HomeWork\GloomHaven\Plugins\Grid\Source\Grid/Public/GHPlayerController.h
 C:\ue4\HomeWork\GloomHaven\Plugins\Grid\Intermediate\Build\Win64\UE4Editor\Inc\Grid\GHPlayerController.generated.h
-C:/ue4/HomeWork/GloomHaven/Plugins/Grid/Intermediate/Build/Win64/UE4Editor/Inc/Grid/GHSpawnGrid.gen.cpp
-C:/ue4/HomeWork/GloomHaven/Plugins/Grid/Intermediate/Build/Win64/UE4Editor/Inc/Grid/Grid.init.gen.cpp

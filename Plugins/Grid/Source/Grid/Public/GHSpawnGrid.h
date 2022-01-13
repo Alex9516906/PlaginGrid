@@ -25,13 +25,16 @@ protected:
 	
 	FVector CalculateSpawnTransform(int i, int j);
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USceneComponent* SceneComponent;
 	
 	void SpawnGridInConstruct();
 
 	UPROPERTY(EditAnywhere, Category = "MeshColor")
 	TSoftObjectPtr<UStaticMesh> StatickMesh;
+
+	UPROPERTY(BlueprintReadWrite)
+	TArray<AGHHexActor*> HexArray;
 	
 private:
 	void FindFriendsToAllHex();
@@ -43,10 +46,10 @@ public:
 	FOnEndMouseOverlap OnEndMouseOverlap;
 	
 	UPROPERTY(EditAnywhere, Category = "SizeGrid")
-	int32 SizeX = 10; ;
+	int32 SizeX = 10; 
 
 	UPROPERTY(EditAnywhere, Category = "SizeGrid")
-	int32 SizeY = 10 ;
+	int32 SizeY = 10;
 	
 private:
 
@@ -56,9 +59,6 @@ private:
 	UPROPERTY()
 	AGHHexActor* Hex;
 	
-	UPROPERTY()
-	TArray<AGHHexActor*> HexArray;
-
 	UPROPERTY(VisibleAnywhere)
 	TArray<UMeshComponent*> ArrayHexComponents;
 

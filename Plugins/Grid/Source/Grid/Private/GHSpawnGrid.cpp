@@ -8,7 +8,7 @@ AGHSpawnGrid::AGHSpawnGrid()
 	PrimaryActorTick.bCanEverTick = false;
 	SceneComponent = CreateDefaultSubobject<USceneComponent>("SceneComponent");
 	SetRootComponent(SceneComponent);
-	SpawnGridInConstruct();
+	//SpawnGridInConstruct();
 }
 
 void AGHSpawnGrid::SpawnGridInConstruct()
@@ -18,6 +18,7 @@ void AGHSpawnGrid::SpawnGridInConstruct()
 	{
 		return;
 	}
+	ArrayHexComponents.Reserve(SizeX*SizeY);
 	for(int i=0; i<SizeX; i++)
 	{
 		for(int j = 0; j<SizeY; j++)
@@ -26,9 +27,8 @@ void AGHSpawnGrid::SpawnGridInConstruct()
 			HexComponent = CreateDefaultSubobject<UStaticMeshComponent>(FName(FString::Printf(TEXT("x=%d y=%d"), i, j)));
 			HexComponent->SetStaticMesh(Mesh.Object);
 			HexComponent->SetupAttachment(SceneComponent);
-			HexComponent->SetWorldRotation(FRotator(0.f,0.f,90.f));
 			HexComponent->SetWorldLocation(CalculateSpawnTransform(i,j));
-			ArrayHexComponents.Add(HexComponent);
+			ArrayHexComponents.Emplace(HexComponent);
 		}
 	}
 }
@@ -36,12 +36,13 @@ void AGHSpawnGrid::SpawnGridInConstruct()
 void AGHSpawnGrid::BeginPlay()
 {
 	Super::BeginPlay();
-	HexComponent = nullptr;
+	/*HexComponent = nullptr;
 	for(auto hexComp:ArrayHexComponents)
 	{
+		if(HexComp!=nullptr)
 		hexComp->DestroyComponent();
 	}
-	ArrayHexComponents.Empty();
+	ArrayHexComponents.Empty();*/
 	HexSpawn();
 	FindFriendsToAllHex();
 }
@@ -64,14 +65,17 @@ void AGHSpawnGrid::HexSpawn()
 			Hex->SetActorLocation(CalculateSpawnTransform(i, j));
 			Hex->CoordX = j;
 			Hex->CoordY = i;
-			HexArray.Add(Hex);
-			Hex->OnClickToMove.AddDynamic(this, &ThisClass::NeedMove);
-			Hex->OnBeginMouseOverlap.AddDynamic(this, &ThisClass::BeginOverlap);
-			Hex->OnEndMouseOverlap.AddDynamic(this, &ThisClass::EndOverlap);
-			Hex->Init();
+			Hex->CheckFloor();
+			if(!Hex->IsPendingKill())
+			{
+				Hex->OnClickToMove.AddDynamic(this, &ThisClass::NeedMove);
+				Hex->OnBeginMouseOverlap.AddDynamic(this, &ThisClass::BeginOverlap);
+				Hex->OnEndMouseOverlap.AddDynamic(this, &ThisClass::EndOverlap);
+				HexArray.Add(Hex);
+			}
 		}
 	}
-	HexArray.Last()->InitSpawn.AddDynamic(this, &ThisClass::Init);
+	HexArray[0]->InitSpawn.AddDynamic(this, &ThisClass::Init);
 }
 
 void AGHSpawnGrid::Init()
@@ -119,7 +123,7 @@ void AGHSpawnGrid::FindFriendsToAllHex()
 {
 	for(auto elemArray:HexArray)
 	{
-		elemArray->FindFriends();
+		elemArray->FindFriends(HexArray);
 	}
 }
 
