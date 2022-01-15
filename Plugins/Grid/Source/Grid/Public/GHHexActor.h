@@ -51,8 +51,17 @@ protected:
 	TSoftObjectPtr<UMaterial> MovableMaterial;
 	
 	bool bOnCharacter;
+
+	bool bIsClear = true;;
+
+	
 	
 public:
+	UFUNCTION(BlueprintCallable)
+	bool IsClear() const {return bIsClear;}
+	UFUNCTION(BlueprintCallable)
+	void SetIsClear(bool NewIsClear) {bIsClear = NewIsClear;}
+
 	FOnClickToMove OnClickToMove;
 	
 	FOnEndMouseOverlap 	OnEndMouseOverlap;
@@ -66,9 +75,23 @@ public:
 	int32 CoordY;
 	
 	TArray<AGHHexActor*> FriendsHexArr;
+
+	UPROPERTY(BlueprintReadOnly)
+	int32 GCost;
+	UPROPERTY(BlueprintReadOnly)
+	int32 HCost;
+
+	UFUNCTION(BlueprintCallable)
+	int32 FCost() const {return GCost+HCost;}
+
+	UPROPERTY()
+	AGHHexActor* Parent;
+	
 	
 	UFUNCTION()
 	void BeginOverlapCursor(UPrimitiveComponent* TouchedComponent);
+
+	
 	
 	UFUNCTION()
 	void EndOverlapCursor(UPrimitiveComponent* TouchedComponent);
@@ -78,7 +101,7 @@ public:
 	
 	virtual void FindFriends(const TArray<AGHHexActor*>& Array);
 	
-	float WhatDistanceToHexEnd(AGHHexActor* EndHex);
+	float GetDistanceToHex(AGHHexActor* EndHex);
 	
 	void ChangeMaterial(EMaterialToHex NeedSetMaterial);
 
@@ -89,4 +112,6 @@ public:
 	void CharacterExitHex();
 
 	void CheckFloor();
+
+	void CheckObject();
 };

@@ -4,7 +4,6 @@
 #include "GHHexActor.h"
 
 #include "DrawDebugHelpers.h"
-#include "Components/BoxComponent.h"
 #include "Components/SphereComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
@@ -25,7 +24,7 @@ void AGHHexActor::BeginPlay()
 {
 	Super::BeginPlay();
 	ChangeMaterial(EMaterialToHex::Clear);
-	
+
 }
 
 void AGHHexActor::FindFriends(const TArray<AGHHexActor*>& Array)
@@ -47,17 +46,21 @@ void AGHHexActor::FindFriends(const TArray<AGHHexActor*>& Array)
 	}
 }
 
-float AGHHexActor::WhatDistanceToHexEnd(AGHHexActor* EndHex)
+float AGHHexActor::GetDistanceToHex(AGHHexActor* EndHex)
 {
-		return UKismetMathLibrary::Sqrt(UKismetMathLibrary::Square(EndHex->CoordX - CoordX ) + UKismetMathLibrary::Square(EndHex->CoordY - CoordY));
+		return (UKismetMathLibrary::Sqrt(UKismetMathLibrary::Square(EndHex->CoordX - CoordX ) + UKismetMathLibrary::Square(EndHex->CoordY - CoordY)))*10;
 }
+
 
 void AGHHexActor::BeginOverlapCursor(UPrimitiveComponent* TouchedComponent )
 {
-	ChangeMaterial(EMaterialToHex::OverlapMouse);
-	if(OnBeginMouseOverlap.IsBound())
+	if(IsClear())
 	{
-		OnBeginMouseOverlap.Broadcast(nullptr,this);
+		ChangeMaterial(EMaterialToHex::OverlapMouse);
+		if(OnBeginMouseOverlap.IsBound())
+		{
+			OnBeginMouseOverlap.Broadcast(nullptr,this);
+		}
 	}
 }
 
@@ -72,9 +75,12 @@ void AGHHexActor::EndOverlapCursor(UPrimitiveComponent* TouchedComponent)
 
 void AGHHexActor::OnClickMouse(UPrimitiveComponent* TouchedComponent,FKey ButtonPressed)
 {
-	if(ButtonPressed == EKeys::LeftMouseButton)
+	if(IsClear())
 	{
-		OnClickToMove.Broadcast(this);
+		if(ButtonPressed == EKeys::LeftMouseButton)
+		{
+			OnClickToMove.Broadcast(this);
+		}
 	}
 }
 void AGHHexActor::ChangeMaterial(EMaterialToHex NeedSetMaterial)
@@ -125,6 +131,7 @@ void AGHHexActor::ChangeMaterial(EMaterialToHex NeedSetMaterial)
 void AGHHexActor::SetCharacterOnHex()
 {
 	bOnCharacter=true;
+	SetIsClear(false);
 	ChangeMaterial(EMaterialToHex::Player);
 }
 
@@ -146,5 +153,21 @@ void AGHHexActor::CheckFloor()
 	if(!HitResult.bBlockingHit)
 	{
 		Destroy();
+	}
+}
+
+void AGHHexActor::CheckObject()
+{
+	FHitResult HitResult;
+	FVector StartVector = GetActorLocation()+GetActorUpVector()*20;
+	FVector EndVector = GetActorLocation()+FVector::DownVector*50;
+	/*FCollisionQueryParams Param;
+	Param.AddIgnoredActor(this);*/
+	UKismetSystemLibrary::SphereTraceSingle(GetWorld(), StartVector,StartVector,20,
+		UEngineTypes::ConvertToTraceType(ECC_Camera),false,
+		{},EDrawDebugTrace::None,HitResult,true);
+	if(HitResult.bBlockingHit)
+	{
+		SetIsClear(false);
 	}
 }

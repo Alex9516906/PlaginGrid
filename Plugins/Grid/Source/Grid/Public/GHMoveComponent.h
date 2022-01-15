@@ -47,7 +47,10 @@ protected:
 	
 	
 public:
-
+	
+	
+	void RetracePath(AGHHexActor* Start, AGHHexActor* End);
+	
 	void Init();
 	
 	UFUNCTION(BlueprintCallable)
@@ -75,10 +78,6 @@ public:
 
 	UPROPERTY()
 	TArray<AGHHexActor*> HexWayCache;
-
-	UPROPERTY()
-	AGHHexActor* NextHex;
-
 	
 };
 

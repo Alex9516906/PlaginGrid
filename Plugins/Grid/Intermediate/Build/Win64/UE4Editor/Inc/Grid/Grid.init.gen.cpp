@@ -31,7 +31,7 @@ void EmptyLinkFunctionForGeneratedCodeGrid_init() {}
 				SingletonFuncArray,
 				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0x61105C13,
+				0xC9A3F194,
 				0x5D0CCF08,
 				METADATA_PARAMS(nullptr, 0)
 			};

@@ -233,13 +233,38 @@ void EmptyLinkFunctionForGeneratedCodeGHHexActor() {}
 		P_THIS->BeginOverlapCursor(Z_Param_TouchedComponent);
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(AGHHexActor::execFCost)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(int32*)Z_Param__Result=P_THIS->FCost();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AGHHexActor::execSetIsClear)
+	{
+		P_GET_UBOOL(Z_Param_NewIsClear);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetIsClear(Z_Param_NewIsClear);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AGHHexActor::execIsClear)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->IsClear();
+		P_NATIVE_END;
+	}
 	void AGHHexActor::StaticRegisterNativesAGHHexActor()
 	{
 		UClass* Class = AGHHexActor::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
 			{ "BeginOverlapCursor", &AGHHexActor::execBeginOverlapCursor },
 			{ "EndOverlapCursor", &AGHHexActor::execEndOverlapCursor },
+			{ "FCost", &AGHHexActor::execFCost },
+			{ "IsClear", &AGHHexActor::execIsClear },
 			{ "OnClickMouse", &AGHHexActor::execOnClickMouse },
+			{ "SetIsClear", &AGHHexActor::execSetIsClear },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -323,6 +348,75 @@ void EmptyLinkFunctionForGeneratedCodeGHHexActor() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AGHHexActor_FCost_Statics
+	{
+		struct GHHexActor_eventFCost_Parms
+		{
+			int32 ReturnValue;
+		};
+		static const UE4CodeGen_Private::FIntPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FIntPropertyParams Z_Construct_UFunction_AGHHexActor_FCost_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(GHHexActor_eventFCost_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AGHHexActor_FCost_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGHHexActor_FCost_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AGHHexActor_FCost_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/GHHexActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AGHHexActor_FCost_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AGHHexActor, nullptr, "FCost", nullptr, nullptr, sizeof(GHHexActor_eventFCost_Parms), Z_Construct_UFunction_AGHHexActor_FCost_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AGHHexActor_FCost_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AGHHexActor_FCost_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AGHHexActor_FCost_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AGHHexActor_FCost()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AGHHexActor_FCost_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AGHHexActor_IsClear_Statics
+	{
+		struct GHHexActor_eventIsClear_Parms
+		{
+			bool ReturnValue;
+		};
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_AGHHexActor_IsClear_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((GHHexActor_eventIsClear_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AGHHexActor_IsClear_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(GHHexActor_eventIsClear_Parms), &Z_Construct_UFunction_AGHHexActor_IsClear_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AGHHexActor_IsClear_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGHHexActor_IsClear_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AGHHexActor_IsClear_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/GHHexActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AGHHexActor_IsClear_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AGHHexActor, nullptr, "IsClear", nullptr, nullptr, sizeof(GHHexActor_eventIsClear_Parms), Z_Construct_UFunction_AGHHexActor_IsClear_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AGHHexActor_IsClear_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AGHHexActor_IsClear_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AGHHexActor_IsClear_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AGHHexActor_IsClear()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AGHHexActor_IsClear_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_AGHHexActor_OnClickMouse_Statics
 	{
 		struct GHHexActor_eventOnClickMouse_Parms
@@ -367,6 +461,43 @@ void EmptyLinkFunctionForGeneratedCodeGHHexActor() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AGHHexActor_SetIsClear_Statics
+	{
+		struct GHHexActor_eventSetIsClear_Parms
+		{
+			bool NewIsClear;
+		};
+		static void NewProp_NewIsClear_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_NewIsClear;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_AGHHexActor_SetIsClear_Statics::NewProp_NewIsClear_SetBit(void* Obj)
+	{
+		((GHHexActor_eventSetIsClear_Parms*)Obj)->NewIsClear = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AGHHexActor_SetIsClear_Statics::NewProp_NewIsClear = { "NewIsClear", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(GHHexActor_eventSetIsClear_Parms), &Z_Construct_UFunction_AGHHexActor_SetIsClear_Statics::NewProp_NewIsClear_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AGHHexActor_SetIsClear_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGHHexActor_SetIsClear_Statics::NewProp_NewIsClear,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AGHHexActor_SetIsClear_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/GHHexActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AGHHexActor_SetIsClear_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AGHHexActor, nullptr, "SetIsClear", nullptr, nullptr, sizeof(GHHexActor_eventSetIsClear_Parms), Z_Construct_UFunction_AGHHexActor_SetIsClear_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AGHHexActor_SetIsClear_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AGHHexActor_SetIsClear_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AGHHexActor_SetIsClear_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AGHHexActor_SetIsClear()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AGHHexActor_SetIsClear_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_AGHHexActor_NoRegister()
 	{
 		return AGHHexActor::StaticClass();
@@ -398,6 +529,18 @@ void EmptyLinkFunctionForGeneratedCodeGHHexActor() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MovableMaterial_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FSoftObjectPropertyParams NewProp_MovableMaterial;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_GCost_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FIntPropertyParams NewProp_GCost;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_HCost_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FIntPropertyParams NewProp_HCost;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Parent_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Parent;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -409,7 +552,10 @@ void EmptyLinkFunctionForGeneratedCodeGHHexActor() {}
 	const FClassFunctionLinkInfo Z_Construct_UClass_AGHHexActor_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_AGHHexActor_BeginOverlapCursor, "BeginOverlapCursor" }, // 3227302075
 		{ &Z_Construct_UFunction_AGHHexActor_EndOverlapCursor, "EndOverlapCursor" }, // 1132803001
+		{ &Z_Construct_UFunction_AGHHexActor_FCost, "FCost" }, // 2378306006
+		{ &Z_Construct_UFunction_AGHHexActor_IsClear, "IsClear" }, // 3684500231
 		{ &Z_Construct_UFunction_AGHHexActor_OnClickMouse, "OnClickMouse" }, // 1180908713
+		{ &Z_Construct_UFunction_AGHHexActor_SetIsClear, "SetIsClear" }, // 421425414
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGHHexActor_Statics::Class_MetaDataParams[] = {
@@ -453,12 +599,35 @@ void EmptyLinkFunctionForGeneratedCodeGHHexActor() {}
 	};
 #endif
 	const UE4CodeGen_Private::FSoftObjectPropertyParams Z_Construct_UClass_AGHHexActor_Statics::NewProp_MovableMaterial = { "MovableMaterial", nullptr, (EPropertyFlags)0x0024080000000001, UE4CodeGen_Private::EPropertyGenFlags::SoftObject, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGHHexActor, MovableMaterial), Z_Construct_UClass_UMaterial_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AGHHexActor_Statics::NewProp_MovableMaterial_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGHHexActor_Statics::NewProp_MovableMaterial_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGHHexActor_Statics::NewProp_GCost_MetaData[] = {
+		{ "Category", "GHHexActor" },
+		{ "ModuleRelativePath", "Public/GHHexActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FIntPropertyParams Z_Construct_UClass_AGHHexActor_Statics::NewProp_GCost = { "GCost", nullptr, (EPropertyFlags)0x0010000000000014, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGHHexActor, GCost), METADATA_PARAMS(Z_Construct_UClass_AGHHexActor_Statics::NewProp_GCost_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGHHexActor_Statics::NewProp_GCost_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGHHexActor_Statics::NewProp_HCost_MetaData[] = {
+		{ "Category", "GHHexActor" },
+		{ "ModuleRelativePath", "Public/GHHexActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FIntPropertyParams Z_Construct_UClass_AGHHexActor_Statics::NewProp_HCost = { "HCost", nullptr, (EPropertyFlags)0x0010000000000014, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGHHexActor, HCost), METADATA_PARAMS(Z_Construct_UClass_AGHHexActor_Statics::NewProp_HCost_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGHHexActor_Statics::NewProp_HCost_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGHHexActor_Statics::NewProp_Parent_MetaData[] = {
+		{ "ModuleRelativePath", "Public/GHHexActor.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGHHexActor_Statics::NewProp_Parent = { "Parent", nullptr, (EPropertyFlags)0x0010000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGHHexActor, Parent), Z_Construct_UClass_AGHHexActor_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AGHHexActor_Statics::NewProp_Parent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGHHexActor_Statics::NewProp_Parent_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AGHHexActor_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHHexActor_Statics::NewProp_MeshGrid,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHHexActor_Statics::NewProp_OnChosenMaterial,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHHexActor_Statics::NewProp_StandardMaterial,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHHexActor_Statics::NewProp_PlayerOnHexMaterial,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHHexActor_Statics::NewProp_MovableMaterial,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHHexActor_Statics::NewProp_GCost,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHHexActor_Statics::NewProp_HCost,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGHHexActor_Statics::NewProp_Parent,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AGHHexActor_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AGHHexActor>::IsAbstract,
@@ -487,7 +656,7 @@ void EmptyLinkFunctionForGeneratedCodeGHHexActor() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AGHHexActor, 2876754626);
+	IMPLEMENT_CLASS(AGHHexActor, 3313452090);
 	template<> GRID_API UClass* StaticClass<AGHHexActor>()
 	{
 		return AGHHexActor::StaticClass();

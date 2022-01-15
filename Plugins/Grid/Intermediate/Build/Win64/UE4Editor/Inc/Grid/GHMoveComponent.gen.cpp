@@ -388,10 +388,6 @@ void EmptyLinkFunctionForGeneratedCodeGHMoveComponent() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_HexWayCache_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FArrayPropertyParams NewProp_HexWayCache;
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_NextHex_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_NextHex;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -458,12 +454,6 @@ void EmptyLinkFunctionForGeneratedCodeGHMoveComponent() {}
 	};
 #endif
 	const UE4CodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UGHMoveComponent_Statics::NewProp_HexWayCache = { "HexWayCache", nullptr, (EPropertyFlags)0x0010000000000000, UE4CodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UGHMoveComponent, HexWayCache), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_UGHMoveComponent_Statics::NewProp_HexWayCache_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UGHMoveComponent_Statics::NewProp_HexWayCache_MetaData)) };
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UGHMoveComponent_Statics::NewProp_NextHex_MetaData[] = {
-		{ "ModuleRelativePath", "Public/GHMoveComponent.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UGHMoveComponent_Statics::NewProp_NextHex = { "NextHex", nullptr, (EPropertyFlags)0x0010000000000000, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UGHMoveComponent, NextHex), Z_Construct_UClass_AGHHexActor_NoRegister, METADATA_PARAMS(Z_Construct_UClass_UGHMoveComponent_Statics::NewProp_NextHex_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UGHMoveComponent_Statics::NewProp_NextHex_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UGHMoveComponent_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGHMoveComponent_Statics::NewProp_SpawnGridActor,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGHMoveComponent_Statics::NewProp_CharacterOwner,
@@ -473,7 +463,6 @@ void EmptyLinkFunctionForGeneratedCodeGHMoveComponent() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGHMoveComponent_Statics::NewProp_HexWayArray,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGHMoveComponent_Statics::NewProp_HexWayCache_Inner,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGHMoveComponent_Statics::NewProp_HexWayCache,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UGHMoveComponent_Statics::NewProp_NextHex,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UGHMoveComponent_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UGHMoveComponent>::IsAbstract,
@@ -502,7 +491,7 @@ void EmptyLinkFunctionForGeneratedCodeGHMoveComponent() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UGHMoveComponent, 1073568760);
+	IMPLEMENT_CLASS(UGHMoveComponent, 245893255);
 	template<> GRID_API UClass* StaticClass<UGHMoveComponent>()
 	{
 		return UGHMoveComponent::StaticClass();

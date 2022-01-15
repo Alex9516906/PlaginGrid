@@ -30,8 +30,7 @@ C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ServerStatReplicator.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameModeBase.generated.h
 C:\ue4\HomeWork\GloomHaven\Plugins\Grid\Intermediate\Build\Win64\UE4Editor\Inc\Grid\GHGameModeBase.generated.h
-C:/ue4/HomeWork/GloomHaven/Plugins/Grid/Intermediate/Build/Win64/UE4Editor/Inc/Grid/GHHexActor.gen.cpp
-C:/ue4/HomeWork/GloomHaven/Plugins/Grid/Intermediate/Build/Win64/UE4Editor/Inc/Grid/GHMoveComponent.gen.cpp
 C:/ue4/HomeWork/GloomHaven/Plugins/Grid/Intermediate/Build/Win64/UE4Editor/Inc/Grid/GHPlayerController.gen.cpp
 C:\ue4\HomeWork\GloomHaven\Plugins\Grid\Source\Grid/Public/GHPlayerController.h
 C:\ue4\HomeWork\GloomHaven\Plugins\Grid\Intermediate\Build\Win64\UE4Editor\Inc\Grid\GHPlayerController.generated.h
+C:/ue4/HomeWork/GloomHaven/Plugins/Grid/Intermediate/Build/Win64/UE4Editor/Inc/Grid/GHSpawnGrid.gen.cpp

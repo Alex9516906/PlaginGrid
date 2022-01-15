@@ -68,6 +68,7 @@ void AGHSpawnGrid::HexSpawn()
 			Hex->CheckFloor();
 			if(!Hex->IsPendingKill())
 			{
+				Hex->CheckObject();
 				Hex->OnClickToMove.AddDynamic(this, &ThisClass::NeedMove);
 				Hex->OnBeginMouseOverlap.AddDynamic(this, &ThisClass::BeginOverlap);
 				Hex->OnEndMouseOverlap.AddDynamic(this, &ThisClass::EndOverlap);

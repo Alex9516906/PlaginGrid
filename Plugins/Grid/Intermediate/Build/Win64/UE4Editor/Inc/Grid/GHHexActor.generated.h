@@ -69,14 +69,20 @@ static inline void FOnClickToMove_DelegateWrapper(const FMulticastScriptDelegate
  \
 	DECLARE_FUNCTION(execOnClickMouse); \
 	DECLARE_FUNCTION(execEndOverlapCursor); \
-	DECLARE_FUNCTION(execBeginOverlapCursor);
+	DECLARE_FUNCTION(execBeginOverlapCursor); \
+	DECLARE_FUNCTION(execFCost); \
+	DECLARE_FUNCTION(execSetIsClear); \
+	DECLARE_FUNCTION(execIsClear);
 
 
 #define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execOnClickMouse); \
 	DECLARE_FUNCTION(execEndOverlapCursor); \
-	DECLARE_FUNCTION(execBeginOverlapCursor);
+	DECLARE_FUNCTION(execBeginOverlapCursor); \
+	DECLARE_FUNCTION(execFCost); \
+	DECLARE_FUNCTION(execSetIsClear); \
+	DECLARE_FUNCTION(execIsClear);
 
 
 #define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_INCLASS_NO_PURE_DECLS \

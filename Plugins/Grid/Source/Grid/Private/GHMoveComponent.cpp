@@ -122,6 +122,8 @@ void UGHMoveComponent::Moving()
 	}
 }
 
+
+
 void UGHMoveComponent::Init()
 {
 	if(ActorLocationHex==nullptr && GetPositionCharacter()!=nullptr)
@@ -155,6 +157,10 @@ void UGHMoveComponent::SetActorLocation(AGHHexActor* NewLocation)
 
 void UGHMoveComponent::ShowPath(AGHHexActor* StartHex, AGHHexActor* HexEnd)
 {
+	/*if(!HexEnd->IsClear())
+	{
+		return;
+	}*/
 	for(const auto Hex:GetPath(StartHex,HexEnd))
 	{
 		Hex->ChangeMaterial(EMaterialToHex::Way);
@@ -168,27 +174,65 @@ void UGHMoveComponent::FindPath(AGHHexActor* StartHex, AGHHexActor* HexEnd)
 		UE_LOG(LogMoveComp,Warning, TEXT("FUNC FindPath HexEnd == nullptr or StartHex == HexEnd or HexEnd == ActorLocationHex or StartHex ==nullptr && ActorLocationHex == nullptr"));
 		return;
 	}
+	
 	if(StartHex ==nullptr)
 	{
 		StartHex = ActorLocationHex;
 	}
-	float distance = 1000.f;
-	AGHHexActor* minDistanceHex = nullptr;
-	for(const auto oneFriend : StartHex->FriendsHexArr)
+	
+	TArray<AGHHexActor*> OpenHex;
+	TArray<AGHHexActor*> ClosedHex;
+	
+	AGHHexActor* CurrentHex;
+	
+	OpenHex.Add(StartHex);
+	
+	while (OpenHex.Num()>0)
 	{
-		const float distanceCalculate = oneFriend->WhatDistanceToHexEnd(HexEnd);
-		
-		if(distanceCalculate<distance)
+		CurrentHex = OpenHex[0];
+
+		for(int32 i =0; i<OpenHex.Num();i++)
 		{
-			distance = distanceCalculate;
-			minDistanceHex = oneFriend;
+			if(OpenHex[i]->FCost()<CurrentHex->FCost() || OpenHex[i]->FCost() == CurrentHex->FCost() && OpenHex[i]->HCost < CurrentHex->HCost)
+			{
+				CurrentHex = OpenHex[i];
+			}
+		}
+		OpenHex.Remove(CurrentHex);
+		ClosedHex.Add(CurrentHex);
+
+		if(CurrentHex == HexEnd){RetracePath(StartHex,HexEnd); return;}
+		for(const auto OneFriend : CurrentHex->FriendsHexArr)
+		{
+			if(!OneFriend->IsClear() || ClosedHex.Find(OneFriend)!=INDEX_NONE)
+			{
+				continue;
+			}
+			int32 NewMovementCostToNeighbour = CurrentHex->GCost + CurrentHex->GetDistanceToHex(OneFriend);
+			if(NewMovementCostToNeighbour< CurrentHex->GCost || OpenHex.Find(OneFriend)==INDEX_NONE)
+			{
+				OneFriend->GCost = NewMovementCostToNeighbour;
+				OneFriend->HCost = FMath::RoundToInt(OneFriend->GetDistanceToHex(HexEnd));
+				OneFriend->Parent=CurrentHex;
+				if(OpenHex.Find(OneFriend)==INDEX_NONE)
+				{
+					OpenHex.Add(OneFriend);
+				}
+			}
 		}
 	}
-	if(minDistanceHex)
+}
+void UGHMoveComponent::RetracePath(AGHHexActor* Start, AGHHexActor* End)
+{
+	//TArray<AGHHexActor*> Path;
+	AGHHexActor* CurrentHex = End;
+	
+	while(CurrentHex!=Start)
 	{
-		HexWayArray.Add(minDistanceHex);
-		FindPath(minDistanceHex, HexEnd);
+		HexWayArray.Add(CurrentHex);
+		CurrentHex = CurrentHex->Parent;
 	}
+	Algo::Reverse(HexWayArray);
 }
 
 TArray<AGHHexActor*>& UGHMoveComponent::GetPath(AGHHexActor* StartHex, AGHHexActor* HexEnd)
