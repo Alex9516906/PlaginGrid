@@ -2,6 +2,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "DrawDebugHelpers.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "GHHexActor.generated.h"
 
 
@@ -87,11 +89,8 @@ public:
 	UPROPERTY()
 	AGHHexActor* Parent;
 	
-	
 	UFUNCTION()
 	void BeginOverlapCursor(UPrimitiveComponent* TouchedComponent);
-
-	
 	
 	UFUNCTION()
 	void EndOverlapCursor(UPrimitiveComponent* TouchedComponent);

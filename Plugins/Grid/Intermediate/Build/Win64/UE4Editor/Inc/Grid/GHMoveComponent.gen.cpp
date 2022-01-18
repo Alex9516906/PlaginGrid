@@ -63,6 +63,14 @@ void EmptyLinkFunctionForGeneratedCodeGHMoveComponent() {}
 		P_THIS->ShowPath(Z_Param_StartHex,Z_Param_HexEnd);
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(UGHMoveComponent::execActiveHex)
+	{
+		P_GET_PROPERTY(FIntProperty,Z_Param_MaxHex);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->ActiveHex(Z_Param_MaxHex);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(UGHMoveComponent::execStopCharacterMove)
 	{
 		P_FINISH;
@@ -77,28 +85,61 @@ void EmptyLinkFunctionForGeneratedCodeGHMoveComponent() {}
 		P_THIS->StartCharacterMove();
 		P_NATIVE_END;
 	}
-	DEFINE_FUNCTION(UGHMoveComponent::execSetMoving)
+	DEFINE_FUNCTION(UGHMoveComponent::execStartMoving)
 	{
 		P_GET_OBJECT(AGHHexActor,Z_Param_HexEnd);
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		P_THIS->SetMoving(Z_Param_HexEnd);
+		P_THIS->StartMoving(Z_Param_HexEnd);
 		P_NATIVE_END;
 	}
 	void UGHMoveComponent::StaticRegisterNativesUGHMoveComponent()
 	{
 		UClass* Class = UGHMoveComponent::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "ActiveHex", &UGHMoveComponent::execActiveHex },
 			{ "ClearWay", &UGHMoveComponent::execClearWay },
 			{ "GetPath", &UGHMoveComponent::execGetPath },
 			{ "GetPositionCharacter", &UGHMoveComponent::execGetPositionCharacter },
 			{ "SetActorLocation", &UGHMoveComponent::execSetActorLocation },
-			{ "SetMoving", &UGHMoveComponent::execSetMoving },
 			{ "ShowPath", &UGHMoveComponent::execShowPath },
 			{ "StartCharacterMove", &UGHMoveComponent::execStartCharacterMove },
+			{ "StartMoving", &UGHMoveComponent::execStartMoving },
 			{ "StopCharacterMove", &UGHMoveComponent::execStopCharacterMove },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_UGHMoveComponent_ActiveHex_Statics
+	{
+		struct GHMoveComponent_eventActiveHex_Parms
+		{
+			int32 MaxHex;
+		};
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_MaxHex;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UGHMoveComponent_ActiveHex_Statics::NewProp_MaxHex = { "MaxHex", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(GHMoveComponent_eventActiveHex_Parms, MaxHex), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UGHMoveComponent_ActiveHex_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UGHMoveComponent_ActiveHex_Statics::NewProp_MaxHex,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UGHMoveComponent_ActiveHex_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/GHMoveComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UGHMoveComponent_ActiveHex_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UGHMoveComponent, nullptr, "ActiveHex", nullptr, nullptr, sizeof(GHMoveComponent_eventActiveHex_Parms), Z_Construct_UFunction_UGHMoveComponent_ActiveHex_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UGHMoveComponent_ActiveHex_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UGHMoveComponent_ActiveHex_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UGHMoveComponent_ActiveHex_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UGHMoveComponent_ActiveHex()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UGHMoveComponent_ActiveHex_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_UGHMoveComponent_ClearWay_Statics
 	{
@@ -239,38 +280,6 @@ void EmptyLinkFunctionForGeneratedCodeGHMoveComponent() {}
 		}
 		return ReturnFunction;
 	}
-	struct Z_Construct_UFunction_UGHMoveComponent_SetMoving_Statics
-	{
-		struct GHMoveComponent_eventSetMoving_Parms
-		{
-			AGHHexActor* HexEnd;
-		};
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_HexEnd;
-		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
-#endif
-		static const UE4CodeGen_Private::FFunctionParams FuncParams;
-	};
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UGHMoveComponent_SetMoving_Statics::NewProp_HexEnd = { "HexEnd", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(GHMoveComponent_eventSetMoving_Parms, HexEnd), Z_Construct_UClass_AGHHexActor_NoRegister, METADATA_PARAMS(nullptr, 0) };
-	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UGHMoveComponent_SetMoving_Statics::PropPointers[] = {
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UGHMoveComponent_SetMoving_Statics::NewProp_HexEnd,
-	};
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UGHMoveComponent_SetMoving_Statics::Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Public/GHMoveComponent.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UGHMoveComponent_SetMoving_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UGHMoveComponent, nullptr, "SetMoving", nullptr, nullptr, sizeof(GHMoveComponent_eventSetMoving_Parms), Z_Construct_UFunction_UGHMoveComponent_SetMoving_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UGHMoveComponent_SetMoving_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UGHMoveComponent_SetMoving_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UGHMoveComponent_SetMoving_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_UGHMoveComponent_SetMoving()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UGHMoveComponent_SetMoving_Statics::FuncParams);
-		}
-		return ReturnFunction;
-	}
 	struct Z_Construct_UFunction_UGHMoveComponent_ShowPath_Statics
 	{
 		struct GHMoveComponent_eventShowPath_Parms
@@ -326,6 +335,38 @@ void EmptyLinkFunctionForGeneratedCodeGHMoveComponent() {}
 		if (!ReturnFunction)
 		{
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UGHMoveComponent_StartCharacterMove_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UGHMoveComponent_StartMoving_Statics
+	{
+		struct GHMoveComponent_eventStartMoving_Parms
+		{
+			AGHHexActor* HexEnd;
+		};
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_HexEnd;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UGHMoveComponent_StartMoving_Statics::NewProp_HexEnd = { "HexEnd", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(GHMoveComponent_eventStartMoving_Parms, HexEnd), Z_Construct_UClass_AGHHexActor_NoRegister, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UGHMoveComponent_StartMoving_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UGHMoveComponent_StartMoving_Statics::NewProp_HexEnd,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UGHMoveComponent_StartMoving_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/GHMoveComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UGHMoveComponent_StartMoving_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UGHMoveComponent, nullptr, "StartMoving", nullptr, nullptr, sizeof(GHMoveComponent_eventStartMoving_Parms), Z_Construct_UFunction_UGHMoveComponent_StartMoving_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UGHMoveComponent_StartMoving_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UGHMoveComponent_StartMoving_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UGHMoveComponent_StartMoving_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UGHMoveComponent_StartMoving()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UGHMoveComponent_StartMoving_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -397,13 +438,14 @@ void EmptyLinkFunctionForGeneratedCodeGHMoveComponent() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_Grid,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_UGHMoveComponent_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_UGHMoveComponent_ActiveHex, "ActiveHex" }, // 4192996246
 		{ &Z_Construct_UFunction_UGHMoveComponent_ClearWay, "ClearWay" }, // 862920907
 		{ &Z_Construct_UFunction_UGHMoveComponent_GetPath, "GetPath" }, // 3148201442
 		{ &Z_Construct_UFunction_UGHMoveComponent_GetPositionCharacter, "GetPositionCharacter" }, // 382000843
 		{ &Z_Construct_UFunction_UGHMoveComponent_SetActorLocation, "SetActorLocation" }, // 1782318877
-		{ &Z_Construct_UFunction_UGHMoveComponent_SetMoving, "SetMoving" }, // 4125694137
 		{ &Z_Construct_UFunction_UGHMoveComponent_ShowPath, "ShowPath" }, // 2229965708
 		{ &Z_Construct_UFunction_UGHMoveComponent_StartCharacterMove, "StartCharacterMove" }, // 2748103176
+		{ &Z_Construct_UFunction_UGHMoveComponent_StartMoving, "StartMoving" }, // 1760793973
 		{ &Z_Construct_UFunction_UGHMoveComponent_StopCharacterMove, "StopCharacterMove" }, // 1145917982
 	};
 #if WITH_METADATA
@@ -491,7 +533,7 @@ void EmptyLinkFunctionForGeneratedCodeGHMoveComponent() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UGHMoveComponent, 245893255);
+	IMPLEMENT_CLASS(UGHMoveComponent, 3086766686);
 	template<> GRID_API UClass* StaticClass<UGHMoveComponent>()
 	{
 		return UGHMoveComponent::StaticClass();

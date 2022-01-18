@@ -16,14 +16,14 @@ struct FKey;
 #endif
 #define GRID_GHHexActor_generated_h
 
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_14_DELEGATE \
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_16_DELEGATE \
 static inline void FInitSpawn_DelegateWrapper(const FMulticastScriptDelegate& InitSpawn) \
 { \
 	InitSpawn.ProcessMulticastDelegate<UObject>(NULL); \
 }
 
 
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_13_DELEGATE \
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_15_DELEGATE \
 struct _Script_Grid_eventOnEndMouseOverlap_Parms \
 { \
 	AGHHexActor* ActorEnd; \
@@ -36,7 +36,7 @@ static inline void FOnEndMouseOverlap_DelegateWrapper(const FMulticastScriptDele
 }
 
 
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_12_DELEGATE \
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_14_DELEGATE \
 struct _Script_Grid_eventOnBeginMouseOverlap_Parms \
 { \
 	AGHHexActor* ActorStart; \
@@ -51,7 +51,7 @@ static inline void FOnBeginMouseOverlap_DelegateWrapper(const FMulticastScriptDe
 }
 
 
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_11_DELEGATE \
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_13_DELEGATE \
 struct _Script_Grid_eventOnClickToMove_Parms \
 { \
 	AGHHexActor* ActorEnd; \
@@ -64,8 +64,8 @@ static inline void FOnClickToMove_DelegateWrapper(const FMulticastScriptDelegate
 }
 
 
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_SPARSE_DATA
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_RPC_WRAPPERS \
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_SPARSE_DATA
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execOnClickMouse); \
 	DECLARE_FUNCTION(execEndOverlapCursor); \
@@ -75,7 +75,7 @@ static inline void FOnClickToMove_DelegateWrapper(const FMulticastScriptDelegate
 	DECLARE_FUNCTION(execIsClear);
 
 
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_RPC_WRAPPERS_NO_PURE_DECLS \
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execOnClickMouse); \
 	DECLARE_FUNCTION(execEndOverlapCursor); \
@@ -85,7 +85,7 @@ static inline void FOnClickToMove_DelegateWrapper(const FMulticastScriptDelegate
 	DECLARE_FUNCTION(execIsClear);
 
 
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_INCLASS_NO_PURE_DECLS \
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAGHHexActor(); \
 	friend struct Z_Construct_UClass_AGHHexActor_Statics; \
@@ -94,7 +94,7 @@ public: \
 	DECLARE_SERIALIZER(AGHHexActor)
 
 
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_INCLASS \
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_INCLASS \
 private: \
 	static void StaticRegisterNativesAGHHexActor(); \
 	friend struct Z_Construct_UClass_AGHHexActor_Statics; \
@@ -103,7 +103,7 @@ public: \
 	DECLARE_SERIALIZER(AGHHexActor)
 
 
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_STANDARD_CONSTRUCTORS \
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AGHHexActor(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AGHHexActor) \
@@ -116,7 +116,7 @@ private: \
 public:
 
 
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_ENHANCED_CONSTRUCTORS \
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AGHHexActor(AGHHexActor&&); \
@@ -127,7 +127,7 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AGHHexActor)
 
 
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_PRIVATE_PROPERTY_OFFSET \
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__MeshGrid() { return STRUCT_OFFSET(AGHHexActor, MeshGrid); } \
 	FORCEINLINE static uint32 __PPO__OnChosenMaterial() { return STRUCT_OFFSET(AGHHexActor, OnChosenMaterial); } \
 	FORCEINLINE static uint32 __PPO__StandardMaterial() { return STRUCT_OFFSET(AGHHexActor, StandardMaterial); } \
@@ -135,27 +135,27 @@ public: \
 	FORCEINLINE static uint32 __PPO__MovableMaterial() { return STRUCT_OFFSET(AGHHexActor, MovableMaterial); }
 
 
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_24_PROLOG
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_GENERATED_BODY_LEGACY \
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_26_PROLOG
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_PRIVATE_PROPERTY_OFFSET \
-	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_SPARSE_DATA \
-	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_RPC_WRAPPERS \
-	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_INCLASS \
-	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_STANDARD_CONSTRUCTORS \
+	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_PRIVATE_PROPERTY_OFFSET \
+	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_SPARSE_DATA \
+	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_RPC_WRAPPERS \
+	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_INCLASS \
+	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_GENERATED_BODY \
+#define GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_PRIVATE_PROPERTY_OFFSET \
-	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_SPARSE_DATA \
-	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_RPC_WRAPPERS_NO_PURE_DECLS \
-	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_INCLASS_NO_PURE_DECLS \
-	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_27_ENHANCED_CONSTRUCTORS \
+	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_PRIVATE_PROPERTY_OFFSET \
+	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_SPARSE_DATA \
+	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_RPC_WRAPPERS_NO_PURE_DECLS \
+	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_INCLASS_NO_PURE_DECLS \
+	GloomHaven_Plugins_Grid_Source_Grid_Public_GHHexActor_h_29_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

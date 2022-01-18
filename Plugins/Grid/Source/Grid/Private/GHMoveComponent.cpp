@@ -38,7 +38,7 @@ void UGHMoveComponent::StartCharacterMove()
 {
 	if(SpawnHexActor)
 	{
-		SpawnHexActor->OnClickToMove.AddDynamic(this, &ThisClass::SetMoving);
+		SpawnHexActor->OnClickToMove.AddDynamic(this, &ThisClass::StartMoving);
 		SpawnHexActor->OnBeginMouseOverlap.AddDynamic(this, &ThisClass::ShowPath);
 		SpawnHexActor->OnEndMouseOverlap.AddDynamic(this, &ThisClass::ClearWay);
 	}
@@ -60,20 +60,28 @@ void UGHMoveComponent::StartCharacterMove()
 			}
 		}
 	}
-}
 
+	ActiveHex(5);
+}
+void UGHMoveComponent::ActiveHex(int MaxHex)
+{
+	for(auto Hex:ActorLocationHex->FriendsHexArr)
+	{
+		Hex->ChangeMaterial(EMaterialToHex::Movable);
+	}
+}
 void UGHMoveComponent::StopCharacterMove()
 {
 	if(SpawnHexActor)
 	{
-		SpawnHexActor->OnClickToMove.RemoveDynamic(this, &ThisClass::SetMoving);
+		SpawnHexActor->OnClickToMove.RemoveDynamic(this, &ThisClass::StartMoving);
 		SpawnHexActor->OnBeginMouseOverlap.RemoveDynamic(this, &ThisClass::ShowPath);
 		SpawnHexActor->OnEndMouseOverlap.RemoveDynamic(this, &ThisClass::ClearWay);
 	}
 	ClearWay(nullptr);
 }
 
-void UGHMoveComponent::SetMoving(AGHHexActor* HexEnd)
+void UGHMoveComponent::StartMoving(AGHHexActor* HexEnd)
 {
 	bIsMoving=true;
 }
@@ -112,7 +120,6 @@ void UGHMoveComponent::Moving()
 		if(HexWayArray.IsValidIndex(0))
 		{
 			AGHHexActor* LastHexInPath = HexWayArray.Last();
-			ClearWay(nullptr);
 			ShowPath(GetPositionCharacter(),LastHexInPath);
 		}
 		ActorLocationHex = GetPositionCharacter();
@@ -234,6 +241,8 @@ void UGHMoveComponent::RetracePath(AGHHexActor* Start, AGHHexActor* End)
 	}
 	Algo::Reverse(HexWayArray);
 }
+
+
 
 TArray<AGHHexActor*>& UGHMoveComponent::GetPath(AGHHexActor* StartHex, AGHHexActor* HexEnd)
 {

@@ -27,17 +27,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USceneComponent* SceneComponent;
-	
-	void SpawnGridInConstruct();
-
-	UPROPERTY(EditAnywhere, Category = "MeshColor")
-	TSoftObjectPtr<UStaticMesh> StatickMesh;
 
 	UPROPERTY(BlueprintReadWrite)
 	TArray<AGHHexActor*> HexArray;
-	
-private:
-	void FindFriendsToAllHex();
 	
 public:
 	FInitSpawn InitSpawn;
@@ -45,26 +37,24 @@ public:
 	FOnBeginMouseOverlap OnBeginMouseOverlap;
 	FOnEndMouseOverlap OnEndMouseOverlap;
 	
-	UPROPERTY(EditAnywhere, Category = "SizeGrid")
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "SizeGrid")
 	int32 SizeX = 10; 
 
-	UPROPERTY(EditAnywhere, Category = "SizeGrid")
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "SizeGrid")
 	int32 SizeY = 10;
 	
 private:
-
+	virtual void OnConstruction(const FTransform& Transform) override;
+	
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AGHHexActor> HexActorClass;
 	
 	UPROPERTY()
 	AGHHexActor* Hex;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSoftObjectPtr<UStaticMesh> HexMesh;
 	
-	UPROPERTY(VisibleAnywhere)
-	TArray<UMeshComponent*> ArrayHexComponents;
-
-	UPROPERTY(VisibleAnywhere)
-	UStaticMeshComponent* HexComponent;
-
 	UFUNCTION()
 	void NeedMove(AGHHexActor* ActorEnd);
 
@@ -76,6 +66,15 @@ private:
 
 	UFUNCTION()
 	void Init();
+
+	void FindFriendsToAllHex();
+
+	static FVector2D GetPointHex(float Size, FVector Centre, int I);
+
+	void DrawHex(const FVector& Centre, const FVector& BoxBounds) const;
+
+	void DrawDebugHexOnConstruct();
+		
 };
 
 

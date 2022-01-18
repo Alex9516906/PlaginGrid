@@ -48,9 +48,8 @@ void AGHHexActor::FindFriends(const TArray<AGHHexActor*>& Array)
 
 float AGHHexActor::GetDistanceToHex(AGHHexActor* EndHex)
 {
-		return (UKismetMathLibrary::Sqrt(UKismetMathLibrary::Square(EndHex->CoordX - CoordX ) + UKismetMathLibrary::Square(EndHex->CoordY - CoordY)))*10;
+	return (UKismetMathLibrary::Sqrt(UKismetMathLibrary::Square(EndHex->CoordX - CoordX ) + UKismetMathLibrary::Square(EndHex->CoordY - CoordY)))*10;
 }
-
 
 void AGHHexActor::BeginOverlapCursor(UPrimitiveComponent* TouchedComponent )
 {
@@ -83,6 +82,7 @@ void AGHHexActor::OnClickMouse(UPrimitiveComponent* TouchedComponent,FKey Button
 		}
 	}
 }
+
 void AGHHexActor::ChangeMaterial(EMaterialToHex NeedSetMaterial)
 {
 	switch (NeedSetMaterial)
@@ -159,13 +159,12 @@ void AGHHexActor::CheckFloor()
 void AGHHexActor::CheckObject()
 {
 	FHitResult HitResult;
-	FVector StartVector = GetActorLocation()+GetActorUpVector()*20;
-	FVector EndVector = GetActorLocation()+FVector::DownVector*50;
-	/*FCollisionQueryParams Param;
-	Param.AddIgnoredActor(this);*/
-	UKismetSystemLibrary::SphereTraceSingle(GetWorld(), StartVector,StartVector,20,
+	constexpr float Radius = 50;
+	const FVector StartVector = GetActorLocation()+GetActorUpVector()*Radius;
+	UKismetSystemLibrary::SphereTraceSingle(GetWorld(), StartVector,StartVector,Radius,
 		UEngineTypes::ConvertToTraceType(ECC_Camera),false,
 		{},EDrawDebugTrace::None,HitResult,true);
+	
 	if(HitResult.bBlockingHit)
 	{
 		SetIsClear(false);

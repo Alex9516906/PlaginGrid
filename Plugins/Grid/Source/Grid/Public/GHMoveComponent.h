@@ -32,7 +32,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	UFUNCTION()
-	void SetMoving(AGHHexActor* HexEnd);
+	void StartMoving(AGHHexActor* HexEnd);
 	
 	UFUNCTION(BlueprintCallable)
 	void StartCharacterMove();
@@ -44,12 +44,23 @@ protected:
 	
 	void Moving();
 
-	
-	
+	void RetracePath(AGHHexActor* Start, AGHHexActor* End);
+
 public:
 	
+	bool bIsMoving = false;
 	
-	void RetracePath(AGHHexActor* Start, AGHHexActor* End);
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
+	AGHHexActor* ActorLocationHex;
+
+	UPROPERTY()
+	TArray<AGHHexActor*> HexWayArray;
+
+	UPROPERTY()
+	TArray<AGHHexActor*> HexWayCache;
+	
+	UFUNCTION(BlueprintCallable)
+	void ActiveHex(int MaxHex);
 	
 	void Init();
 	
@@ -68,16 +79,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetActorLocation(AGHHexActor* NewLocation);
 
-	bool bIsMoving = false;
-	
-	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
-	AGHHexActor* ActorLocationHex;
-
-	UPROPERTY()
-	TArray<AGHHexActor*> HexWayArray;
-
-	UPROPERTY()
-	TArray<AGHHexActor*> HexWayCache;
 	
 };
 

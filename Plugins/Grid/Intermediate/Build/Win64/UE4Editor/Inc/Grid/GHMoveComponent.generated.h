@@ -22,9 +22,10 @@ class AGHHexActor;
 	DECLARE_FUNCTION(execGetPositionCharacter); \
 	DECLARE_FUNCTION(execGetPath); \
 	DECLARE_FUNCTION(execShowPath); \
+	DECLARE_FUNCTION(execActiveHex); \
 	DECLARE_FUNCTION(execStopCharacterMove); \
 	DECLARE_FUNCTION(execStartCharacterMove); \
-	DECLARE_FUNCTION(execSetMoving);
+	DECLARE_FUNCTION(execStartMoving);
 
 
 #define GloomHaven_Plugins_Grid_Source_Grid_Public_GHMoveComponent_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
@@ -34,9 +35,10 @@ class AGHHexActor;
 	DECLARE_FUNCTION(execGetPositionCharacter); \
 	DECLARE_FUNCTION(execGetPath); \
 	DECLARE_FUNCTION(execShowPath); \
+	DECLARE_FUNCTION(execActiveHex); \
 	DECLARE_FUNCTION(execStopCharacterMove); \
 	DECLARE_FUNCTION(execStartCharacterMove); \
-	DECLARE_FUNCTION(execSetMoving);
+	DECLARE_FUNCTION(execStartMoving);
 
 
 #define GloomHaven_Plugins_Grid_Source_Grid_Public_GHMoveComponent_h_14_INCLASS_NO_PURE_DECLS \

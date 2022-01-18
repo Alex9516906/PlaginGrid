@@ -8,41 +8,17 @@ AGHSpawnGrid::AGHSpawnGrid()
 	PrimaryActorTick.bCanEverTick = false;
 	SceneComponent = CreateDefaultSubobject<USceneComponent>("SceneComponent");
 	SetRootComponent(SceneComponent);
-	//SpawnGridInConstruct();
 }
 
-void AGHSpawnGrid::SpawnGridInConstruct()
+void AGHSpawnGrid::OnConstruction(const FTransform& Transform)
 {
-	const auto Mesh = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("/Grid/Mesh/hexMesh.hexMesh"));
-	if(!Mesh.Succeeded())
-	{
-		return;
-	}
-	ArrayHexComponents.Reserve(SizeX*SizeY);
-	for(int i=0; i<SizeX; i++)
-	{
-		for(int j = 0; j<SizeY; j++)
-		{
-			
-			HexComponent = CreateDefaultSubobject<UStaticMeshComponent>(FName(FString::Printf(TEXT("x=%d y=%d"), i, j)));
-			HexComponent->SetStaticMesh(Mesh.Object);
-			HexComponent->SetupAttachment(SceneComponent);
-			HexComponent->SetWorldLocation(CalculateSpawnTransform(i,j));
-			ArrayHexComponents.Emplace(HexComponent);
-		}
-	}
+	Super::OnConstruction(Transform);
+	DrawDebugHexOnConstruct();
 }
 
 void AGHSpawnGrid::BeginPlay()
 {
 	Super::BeginPlay();
-	/*HexComponent = nullptr;
-	for(auto hexComp:ArrayHexComponents)
-	{
-		if(HexComp!=nullptr)
-		hexComp->DestroyComponent();
-	}
-	ArrayHexComponents.Empty();*/
 	HexSpawn();
 	FindFriendsToAllHex();
 }
@@ -94,44 +70,79 @@ FVector AGHSpawnGrid::CalculateSpawnTransform(int i, int j)
 	float SphereRadius;
 	float yMylti;
 	float xMylti;
-		if(HexComponent!=nullptr)
-		{
-			UKismetSystemLibrary::GetComponentBounds(HexComponent, Origin, BoxEn, SphereRadius);
-			xMylti =  BoxEn.X*1.75;
-			yMylti = BoxEn.Y*1.7;
-			
-			const float x = GetActorLocation().X+ (i * xMylti);
-			const float y_a = GetActorLocation().Y+ (j * yMylti);
-			const float y_b = (GetActorLocation().Y+ (j * yMylti))+BoxEn.Y*0.85;
-			const FVector a(x, y_a, GetActorLocation().Z);
-			const FVector b(x, y_b, GetActorLocation().Z);
-			
-			return UKismetMathLibrary::SelectVector(a, b, i%2==0);
-		}
-		UKismetSystemLibrary::GetComponentBounds(Hex->GetMesh(), Origin, BoxEn, SphereRadius);
-		xMylti = BoxEn.X*1.5;
-		yMylti= BoxEn.Y*2;
-		const float x = GetActorLocation().X+ (i * xMylti);
-		const float y_a = GetActorLocation().Y+ (j * yMylti);
-		const float y_b = (GetActorLocation().Y+ (j * yMylti))+BoxEn.Y;
-		const FVector a(x, y_a, GetActorLocation().Z);
-		const FVector b(x, y_b, GetActorLocation().Z);
 	
-		return UKismetMathLibrary::SelectVector(a, b, i%2==0);
+	UKismetSystemLibrary::GetComponentBounds(Hex->GetMesh(), Origin, BoxEn, SphereRadius);
+	xMylti = BoxEn.X*1.5;
+	yMylti= BoxEn.Y*2;
+	const float x = GetActorLocation().X+ (i * xMylti);
+	const float y_a = GetActorLocation().Y+ (j * yMylti);
+	const float y_b = (GetActorLocation().Y+ (j * yMylti))+BoxEn.Y;
+	const FVector a(x, y_a, GetActorLocation().Z);
+	const FVector b(x, y_b, GetActorLocation().Z);
+
+	return UKismetMathLibrary::SelectVector(a, b, i%2==0);
 }
 
 void AGHSpawnGrid::FindFriendsToAllHex()
 {
-	for(auto elemArray:HexArray)
+	for(const auto ElemArray:HexArray)
 	{
-		elemArray->FindFriends(HexArray);
+		ElemArray->FindFriends(HexArray);
 	}
+}
+
+void AGHSpawnGrid::DrawDebugHexOnConstruct()
+{
+	UKismetSystemLibrary::FlushPersistentDebugLines(this);
+	const auto StaticMeshPtr =HexMesh.LoadSynchronous();
+	
+	if(!IsValid(StaticMeshPtr)) {return;}
+	
+	const auto Box = StaticMeshPtr->GetBounds().BoxExtent;
+	for(int i=0; i<SizeX; i++)	
+	{
+		for(int j = 0; j<SizeY; j++)
+		{
+			const float xMylti = Box.Y*1.5;
+			const float yMylti= Box.X*2;
+			const float x = GetActorLocation().X+ (i * xMylti);
+			const float y_a = GetActorLocation().Y+ (j * yMylti);
+			const float y_b = (GetActorLocation().Y+ (j * yMylti))+Box.Y*0.85;
+			const FVector a(x, y_a, GetActorLocation().Z);
+			const FVector b(x, y_b, GetActorLocation().Z);
+
+			const FVector Centre = UKismetMathLibrary::SelectVector(a, b, i%2==0);
+			DrawHex(Centre,Box);
+		}
+	}
+	
+}
+
+void AGHSpawnGrid::DrawHex(const FVector& Centre, const FVector& BoxBounds) const
+{
+	
+	float LocationZ = GetActorLocation().Z;
+	for(int32 i =0; i<=5; i++)
+	{
+		FVector2D VectorStart = GetPointHex(BoxBounds.Y,Centre, i);
+		FVector2D VectorEnd = GetPointHex(BoxBounds.Y,Centre, i+1);
+		DrawDebugLine(GetWorld(),FVector(VectorStart.X,VectorStart.Y,LocationZ),
+			FVector(VectorEnd.X,VectorEnd.Y,LocationZ),FColor::Green, false,100000.f,0,5.f);
+	}
+}
+
+FVector2D AGHSpawnGrid::GetPointHex(const float Size, FVector Centre, int I)
+{
+	const float AngleDeg = I*60;
+	const float AngleRad = AngleDeg* (PI/180);
+	return FVector2D(FMath::Cos(AngleRad)*Size,FMath::Sin(AngleRad)*Size) + FVector2D(Centre.X,Centre.Y);
 }
 
 void AGHSpawnGrid::NeedMove(AGHHexActor* ActorEnd)
 {
 	OnClickToMove.Broadcast(ActorEnd);
 }
+
 void AGHSpawnGrid::EndOverlap(AGHHexActor* ActorEnd)
 {
 	OnEndMouseOverlap.Broadcast(ActorEnd);
